@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Inclinação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { font-size: 1.2em; margin: 10px 0; }
+    .result { font-size: 1.4em; font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Calculadora de Inclinação</h2>
+  <label>Número de Passos:</label><br>
+  <input type="number" id="passos" placeholder="ex: 10"><br>
+  <label>Inclinação (%):</label><br>
+  <input type="number" id="inclinacao" placeholder="ex: 5"><br>
+  <button onclick="calcular()">Calcular</button>
+  <div class="result" id="resultado"></div>
+  
+  <script>
+    function calcular() {
+      const passos = parseFloat(document.getElementById("passos").value);
+      const inclinacao = parseFloat(document.getElementById("inclinacao").value);
+      if (isNaN(passos) || isNaN(inclinacao)) {
+        document.getElementById("resultado").textContent = "Preencha todos os campos!";
+        return;
+      }
+      const x = ((passos * 2) - 1) * inclinacao * 2.54;
+      document.getElementById("resultado").textContent = `Resultado: ${x.toFixed(2)} cm`;
+    }
+  </script>
+</body>
+</html>
